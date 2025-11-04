@@ -6,3 +6,13 @@
     background-color: crimson;
     color: aquamarine;
 }
+
+.yellow_highlight_border_p{
+    background-color: yellow;
+    color: red;
+    border: 10px solid black
+}
+
+h1{
+    color: orange
+}
