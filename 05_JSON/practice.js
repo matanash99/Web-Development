@@ -65,15 +65,7 @@ let playlist2 = JSON.parse(jsonText);
 //Save the playlist text as key in browser client local storage
 localStorage.setItem("asdf", jsonText)
 
-
+//Get the playlist text with key
 let storageText = localStorage.getItem("asdf")
 let playlist3 = JSON.parse(storageText)
-
-
-
-
-
-
-
-
 

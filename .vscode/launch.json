@@ -8,7 +8,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "Open index.html",
-            "file": "c:\\Web Development\\Web-Development\\05_JSON\\index.html"
+            "file": "c:\\Web Development\\Web-Development\\05_JSON\\SongsListing\\index.html"
         }
     ]
 }
