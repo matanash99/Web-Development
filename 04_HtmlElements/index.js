@@ -17,30 +17,87 @@ function pageLoaded() {
     lblRes = document.getElementById('lblRes') 
 }
 
-function calculate() {
-    let txt1Text = txt1.value;
-    let num1 = parseInt(txt1Text);
-    
-    let txt2Text = txt2.value;
-    let num2 = parseInt(txt2Text);
 
-    let res = num1 + num2;
+function calculate() {
+    const num1 = parseFloat(txt1.value);
+    const num2 = parseFloat(txt2.value);
+    const op = operator.value;
+
+    //Validate 1
+    if (!isNaN(num1)) {
+        txt1.classList.add("is-valid");
+        txt1.classList.remove("is-invalid");
+    } else {
+        txt1.classList.add("is-invalid");
+        txt1.classList.remove("is-valid");
+    }
+
+    //Validate 2
+    if (!isNaN(num2)) {
+        txt2.classList.add("is-valid");
+        txt2.classList.remove("is-invalid");
+    } else {
+        txt2.classList.add("is-invalid");
+        txt2.classList.remove("is-valid");
+    }
+
+    //Zero division check
+    if (op === "/" && num2 === 0) {
+        txt2.classList.add("is-invalid");
+        txt2.classList.remove("is-valid");
+        lblRes.innerText = "Error: Division by zero!";
+        return; // Stop calculation
+    }
+
+
+    if (isNaN(num1) || isNaN(num2)) {
+        lblRes.innerText = "Error: Invalid number!";
+        return;
+    }
+
+    // Perform calculation
+    let res;
+    switch(op) {
+        case "+": res = num1 + num2; break;
+        case "-": res = num1 - num2; break;
+        case "*": res = num1 * num2; break;
+        case "/": res = num1 / num2; break;
+    }
+
     lblRes.innerText = res;
+
+    // Log the action
+    print(`${num1} ${op} ${num2} = ${res}`, true);
 }
+
+
 
 const btn2 = document.getElementById("btn2")
 btn2.addEventListener("click",()=>{
     print("btn2 clicked: "+ btn2.id + " | " + btn2.innerHTML)
 })
 
-function print(msg) {
+
+function print(msg, append = false) {
     // Get text area element reference
     const ta = document.getElementById("output");
-    // Write msg to textArea text
-    if (ta) ta.value = msg;
-    // Write Log
-    else console.log(msg);
+
+    if (ta) {
+        if (append) {
+            // Add msg to textArea text
+            ta.value += (ta.value ? "\n" : "") + msg;
+        } else {
+            // Replace msg in text area
+            ta.value = msg;
+        }
+        ta.scrollTop = ta.scrollHeight;
+
+    } else {
+        console.log(msg);
+    }
+
 }
+
 
 function demoNative() {
     let out = "=== STEP 1: NATIVE TYPES ===\n";
