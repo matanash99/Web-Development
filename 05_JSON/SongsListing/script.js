@@ -6,7 +6,7 @@ const submitBtn = document.getElementById('submitBtn');
 
 //If not exist in local storage get empty array
 //Else get JSON text and convert to object json
-let songs = JSON.parse(localStorage.getItem('playlist')) || [];
+let songs = JSON.parse(localStorage.getItem('songs')) || [];
 
 
 
@@ -35,7 +35,7 @@ form.addEventListener('submit', (e) => {
 
 function saveAndRender() {
     //Save to local storage
-    localStorage.setItem('playlist', JSON.stringify(songs));
+    localStorage.setItem('songs', JSON.stringify(songs));
 
     //TODO Reload UI
     renderSongs();
