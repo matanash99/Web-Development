@@ -1,4 +1,3 @@
-
 //Get HTML DOM Element References
 const form = document.getElementById('songForm');
 const list = document.getElementById('songList');
